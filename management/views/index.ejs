@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>Number of all orders: <%= all %>
+  </h1>
+  <h1>Number of all active orders: <%= active %>
+  </h1>
+  <hr>
+  <h2>The two popular dishes (With quantity)</h2>
+  <ul>
+    <%popular.forEach(item=> { %>
+      <li>
+        <%=item.Dish%> (<%=item.Qty %>)
+      </li>
+      <%})%>
+  </ul>
+</body>
+
+</html>
