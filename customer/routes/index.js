@@ -12,7 +12,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', jsonParser, async function(req, res, next) {
-
+  const {FirstName, LastName, DishName } = req.body;
+  if(!FirstName || !LastName || !DishName ) {
+    res.status(400).json({ error: 'Please provide all the required fields.'});
+    return;
+  }
+  try {
+    await orderService.create(FirstName, LastName, DishName);
+    res.status(201).send('Success!');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error ocurred while creating the order.'})
+  }
 });
 
 module.exports = router;
