@@ -1,11 +1,16 @@
 var express = require('express');
-var bodyParser = require('body-parser')
+var db = require("../models");
+var OrderService = require("../services/OrderService")
+var orderService = new OrderService(db);
+var bodyParser = require('body-parser');
+const order = require('../models/order');
 var jsonParser = bodyParser.json()
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  res.render('index', { orders: [] });
+  const orders = await orderService.getAll();
+  res.render('index', { orders });
 });
 
 router.post('/', jsonParser, async function(req, res, next) {
