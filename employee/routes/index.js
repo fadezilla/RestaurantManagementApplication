@@ -9,14 +9,14 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  const orders = await orderService.getAll();
-  res.render('index', { orders });
+  const allActiveOrders = await orderService.getAllActive();
+  res.render('index', { orders: allActiveOrders });
 });
 
 router.post('/', jsonParser, async function(req, res, next) {
-  const {id}  = req.params.id;
+  const {id}  = req.body;
   try {
-    await orderService.create(id);
+    await orderService.updateOrder(id);
     res.status(201).send('Success!');
   } catch (error) {
     console.error(error);

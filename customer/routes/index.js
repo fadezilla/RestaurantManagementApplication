@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.post('/', jsonParser, async function(req, res, next) {
   const {FirstName, LastName, DishName } = req.body;
   if(!FirstName || !LastName || !DishName ) {
-    res.status(400).json({ error: 'Please provide all the required fields.'});
+    res.status(400).send({ alert: 'Please provide all the required fields.'});
     return;
   }
   try {
