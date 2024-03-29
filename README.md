@@ -1,21 +1,41 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/f5FOkUcO)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12280603&assignment_repo_type=AssignmentRepo)
+# Restaurant Management Application
 
+This project is a basic application for a restaurant, designed to facilitate ordering, order management by employees, and provide statistical insights for management. The application consists of multiple microservices and utilizes a centralized database. Below are the instructions to set up and use the application effectively.
 
-![](http://143.42.108.232/pvt/Noroff-64.png)
-# Noroff
-# Back-end Development Year 2
-### Database Technologies - Course Assignment 1 <sup>V1</sup>
+# Microservices
+## Gateway
+The gateway service acts as the main entry point for the application, routing requests to respective microservices. It runs on port 8000 and redirects requests to the following microservices:
 
-Instruction for the course assignment is in the LMS (Moodle) system of Noroff.
-[https://lms.noroff.no](https://lms.noroff.no)
+Customer: Port 8001
+Employee: Port 8002
+Management: Port 8003
 
-![](http://143.42.108.232/pvt/important.png)
+## Customer
+Customers can access the customer page from http://localhost:8000/customer. They can place orders by providing their first and last names along with the dish name. Orders are added to the database with an initial status of active.
 
-You will not be able to make any submissions after the deadline of the course assignment. Make sure to make all your commit **BEFORE** the deadline.
+## Employee
+Employees use the application to manage orders. They can view all active orders and mark them as inactive once served. The employee endpoint to access orders is http://localhost:8000/employee.
 
-![](http://143.42.108.232/pvt/help_small.png)
+## Management
+The management interface provides insights into restaurant statistics using RAW SQL queries. Management can view the total number of orders placed, orders served, and the two most popular dishes.
 
-If you need help with any instructions for the course assignment, contact your teacher on **Microsoft Teams**.
+## Azure Database
+The application utilizes an Azure database for data storage. The database schema includes a table named Orders with the following fields:
 
-**REMEMBER** Your Moodle LMS submission must have your repository link **AND** your Github username in the text file.
+FirstName: VARCHAR(255)
+LastName: VARCHAR(255)
+DishName: VARCHAR(255)
+Active: BIT
+
+# Setup Instructions
+1. Clone the repository from the provided Git Classroom link.
+2. Set up an Azure database and create the Orders table with the specified schema.
+3. Update the .env files for each microservice with the relevant database credentials and port numbers.
+4. Install dependencies for each microservice using npm install.
+5. Run each microservice using npm start.
+6. Access the application through the gateway service at http://localhost:8000.
+
+# Usage
+Customers can place orders via the customer interface.
+Employees can manage orders via the employee interface.
+Management can view statistics and insights via the management interface.
