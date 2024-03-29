@@ -7,7 +7,9 @@ This project is a basic application for a restaurant, designed to facilitate ord
 The gateway service acts as the main entry point for the application, routing requests to respective microservices. It runs on port 8000 and redirects requests to the following microservices:
 
 Customer: Port 8001
+
 Employee: Port 8002
+
 Management: Port 8003
 
 ## Customer
@@ -23,8 +25,11 @@ The management interface provides insights into restaurant statistics using RAW 
 The application utilizes an Azure database for data storage. The database schema includes a table named Orders with the following fields:
 
 FirstName: VARCHAR(255)
+
 LastName: VARCHAR(255)
+
 DishName: VARCHAR(255)
+
 Active: BIT
 
 # Setup Instructions
