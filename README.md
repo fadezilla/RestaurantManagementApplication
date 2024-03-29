@@ -19,7 +19,7 @@ Customers can access the customer page from http://localhost:8000/customer. They
 Employees use the application to manage orders. They can view all active orders and mark them as inactive once served. The employee endpoint to access orders is http://localhost:8000/employee.
 
 ## Management
-The management interface provides insights into restaurant statistics using RAW SQL queries. Management can view the total number of orders placed, orders served, and the two most popular dishes.
+The management interface provides insights into restaurant statistics using RAW SQL queries. Management can view the total number of orders placed, orders served, and the two most popular dishes. The Management endpoint to access orders is http://localhost:8000/management.
 
 ## Azure Database
 The application utilizes an Azure database for data storage. The database schema includes a table named Orders with the following fields:
